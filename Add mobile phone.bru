@@ -1,0 +1,32 @@
+meta {
+  name: Add mobile phone
+  type: http
+  seq: 3
+}
+
+post {
+  url: https://api.restful-api.dev/objects
+  body: json
+  auth: none
+}
+
+auth:basic {
+  username: 
+  password: 
+}
+
+auth:bearer {
+  token: 
+}
+
+body:json {
+  {
+     "name": "Apple MacBook Pro 16",
+     "data": {
+        "year": 2019,
+        "price": 1849.99,
+        "CPU model": "Intel Core i9",
+        "Hard disk size": "1 TB"
+     }
+  }
+}
