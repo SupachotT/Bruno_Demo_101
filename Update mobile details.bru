@@ -33,3 +33,19 @@ body:json {
   
   
 }
+
+tests {
+  const data = res.getBody();
+  
+  test("Status should be '200'", function() {
+    expect(res.getStatus()).to.equal(200);
+  });
+  
+  test("ราคาสินค้าเท่ากับกับ '2049.99'", function() {
+    expect(data.data.price).to.eql(2049.99);
+  });
+  
+  test("สีของสินค้าคือ 'blue'", function() {
+    expect(data.data.color).to.eql('blue');
+  });
+}
