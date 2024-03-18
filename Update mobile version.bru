@@ -24,3 +24,15 @@ body:json {
      "name": "Apple MacBook Pro 191 (Updated version)"
   }
 }
+
+tests {
+  const data = res.getBody();
+  
+  test("Status should be '200'", function() {
+    expect(res.getStatus()).to.equal(200);
+  });
+  
+  test("ชื่อของประเภทโทรศัพท์ คือ 'Apple MacBook Pro 191 (Updated version)'", function() {
+    expect(data.name).to.eql('Apple MacBook Pro 191 (Updated version)');
+  });
+}
