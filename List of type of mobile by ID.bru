@@ -1,17 +1,17 @@
 meta {
   name: List of type of mobile by ID
   type: http
-  seq: 2
+  seq: 3
 }
 
 get {
-  url: https://api.restful-api.dev/objects?id=ff8081818e21ce2d018e3c0822891794
+  url: https://api.restful-api.dev/objects?id={{Product_ID}}
   body: none
   auth: none
 }
 
 query {
-  id: ff8081818e21ce2d018e3c0822891794
+  id: {{Product_ID}}
 }
 
 auth:basic {
@@ -21,4 +21,17 @@ auth:basic {
 
 auth:bearer {
   token: 
+}
+
+tests {
+  const data = res.getBody();
+  
+  test("Status should be '200'", function() {
+    expect(res.getStatus()).to.equal(200);
+  });
+  
+  test("มีของโทรศัพท์ ชื่อ 'Apple MacBook Pro 16'", function() {
+    expect(data[0].name).to.eql('Apple MacBook Pro 16');
+  });
+  
 }
