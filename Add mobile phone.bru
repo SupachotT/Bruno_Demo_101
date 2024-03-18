@@ -1,7 +1,7 @@
 meta {
   name: Add mobile phone
   type: http
-  seq: 3
+  seq: 2
 }
 
 post {
@@ -29,4 +29,30 @@ body:json {
         "Hard disk size": "1 TB"
      }
   }
+}
+
+tests {
+  const data = res.getBody();
+  
+  test("Status should be '200'", function() {
+    expect(res.getStatus()).to.equal(200);
+  });
+  
+  test("ID ไม่เป็นค่า Null", function() {
+    expect(data.id).to.not.null;
+    console.log(data.id);
+    bru.setVar("Product_ID",data.id)
+  });
+  
+  test("เพิ่มประเภทของโทรศัพท์ ชื่อ 'Apple MacBook Pro 16'", function() {
+    expect(data.name).to.eql('Apple MacBook Pro 16');
+  });
+  
+  test("ปีที่สร้างคือ '2019'", function() {
+    expect(data.data.year).to.eql(2019);
+  });
+  
+  test("ราคาสินค้าเท่ากับกับ '1849.99'", function() {
+    expect(data.data.price).to.eql(1849.99);
+  });
 }
